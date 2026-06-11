@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
-  const url = "http://localhost:4000"
+  const url = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000"
 
   return (
     <div>
@@ -21,6 +21,7 @@ const App = () => {
       <div className="app-content">
         <Sidebar/>
         <Routes>
+          <Route path="/" element={<Navigate to="/add"/>}/>
           <Route path="/add" element={<Add url={url}/>}/>
           <Route path="/list" element={<List url={url}/>}/>
           <Route path="/orders" element={<Orders url={url}/>}/>
